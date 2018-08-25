@@ -45,3 +45,71 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'kaminari'
+gem 'rails-i18n'
+gem 'whenever', require: false
+gem 'delayed_job_active_record'
+gem 'slack-notifier'
+gem 'counter_culture'
+gem 'csv_shaper'
+gem 'draper'
+gem 'email_validator'
+gem 'rails-observers'
+gem 'validate_url'
+gem 'pundit'
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'slim-rails'
+gem 'aws-sdk-s3'
+gem 'mini_magick'
+gem 'activerecord-import'
+gem 'acts_as_votable', '~> 0.11.1'
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
+group :development do
+  gem 'derailed_benchmarks'
+  gem 'brakeman'
+  gem 'bundler-audit'
+  gem 'bullet'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-yarn'
+  gem 'capistrano3-puma'
+  gem 'meta_request'
+  gem 'dotenv-rails'
+  gem 'metric_fu'
+  gem 'html2slim'
+  gem 'annotate'
+end
+
+group :test do
+  gem 'slim_lint'
+  gem 'parallel_tests'
+end
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-state'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+  gem 'awesome_print'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'rspec-rails'
+  gem 'faker'
+  gem 'timecop'
+  gem 'factory_bot_rails'
+  gem 'database_rewinder'
+  gem 'webmock'
+  gem 'vcr'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'simplecov', require: false
+  gem 'shoulda-matchers'
+  gem 'pundit-matchers'
+  gem 'spring-commands-rspec'
+  gem 'rubocop'
+  gem 'rubocop-rspec'
+end
