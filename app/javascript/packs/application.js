@@ -1,10 +1,43 @@
-/* eslint no-console:0 */
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
-//
-// To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
-// layout file, like app/views/layouts/application.html.erb
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
 
-console.log('Hello World from Webpacker')
+import DevTools from '../src/DevTools';
+import reducer from '../src/app/reducer';
+
+import { BrowserRouter } from 'react-router-dom';
+import App from '../src/app';
+
+const { ENVIRONMENT } = process.env;
+
+let enhancer;
+
+if (ENVIRONMENT === 'development') {
+  enhancer = compose(
+    applyMiddleware(thunk),
+    DevTools.instrument({
+      maxAge: 20,
+      shouldCatchErrors: true,
+    }),
+  );
+} else {
+  enhancer = compose(applyMiddleware(thunk));
+}
+
+const store = createStore(reducer, enhancer);
+
+document.addEventListener('DOMContentLoaded', () => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <span>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+        {ENVIRONMENT === 'development' ? <DevTools /> : null}
+      </span>
+    </Provider>,
+    document.body.appendChild(document.createElement('div')),
+  );
+});
