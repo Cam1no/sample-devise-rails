@@ -1,4 +1,3 @@
 class ReactController < ActionController::Base
-  def root
-  end
+  def root; end
 end
